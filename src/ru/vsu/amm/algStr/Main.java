@@ -6,14 +6,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String T = "abaabaaba";
+        String T = "abcabdabcabeabcabdabcabc";
         String P = "abaaba";
-        System.out.println("Target: " + T);
-        System.out.println("Patter: " + P);
-        List inputsList = borderMethod(T,P);
-        showResult(T, inputsList);
+//        System.out.println("Target: " + T);
+//        System.out.println("Patter: " + P);
+//        List inputsList = borderMethod(T,P);
+//        showResult(T, inputsList);
 
-      //  int[] bl = block(T);
+        int[] bl = block(T);
     }
 
     private static void showResult(String t, List<Integer> inputsList) {
@@ -100,7 +100,7 @@ public class Main {
                 else{
                     bl[i] = r - i + 1;
                     l = i;
-                    int q = comp(r - i +1, r, str);
+                    int q = comp(r - i + 1, r + 1, str);
                     if(q > 0){
                         bl[i] = bl[i] + q;
                         r = i + bl[i] - 1;
@@ -116,11 +116,11 @@ public class Main {
         if(p1 >= n || p2 >= n)
             return 0;
         else{
-            int t ; // минимальная длина док онца строки
-            if ( n - p1 < n - p2)
-                t = n - p1;
+            int t ; // минимальная длина до конца строки
+            if ( n - 1 - p1 < n - 1 - p2)
+                t = n - p1 - 1;
             else
-                t = n - p2;
+                t = n - p2 - 1;
 
             int j = 0; // количество совпавших элементов
             while ( j <= t && str.charAt(p1 + j) == str.charAt(p2 + j))
