@@ -17,6 +17,13 @@ public class WriterThread extends Thread {
             appendedStr = getString();
             commonResources.add(appendedStr);
             System.out.println("Добавил " + appendedStr);
+
+            try {
+                sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
