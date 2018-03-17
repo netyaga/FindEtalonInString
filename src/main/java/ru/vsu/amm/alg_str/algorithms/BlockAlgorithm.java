@@ -1,9 +1,6 @@
-package ru.vsu.amm.algStr.algorithms;
+package ru.vsu.amm.alg_str.algorithms;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class BorderAlgorithm implements Algorithm {
+public class BlockAlgorithm implements Algorithm {
     @Override
     public int method(String text, String target) {
         final String DELIMITER = "#";

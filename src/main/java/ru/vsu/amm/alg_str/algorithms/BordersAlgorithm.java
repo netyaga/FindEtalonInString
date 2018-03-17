@@ -1,6 +1,6 @@
-package ru.vsu.amm.algStr.algorithms;
+package ru.vsu.amm.alg_str.algorithms;
 
-public class BlocksAlgorithm implements Algorithm {
+public class BordersAlgorithm implements Algorithm {
     @Override
     public int method(String text, String target) {
         final String DELIMITER = "#";
