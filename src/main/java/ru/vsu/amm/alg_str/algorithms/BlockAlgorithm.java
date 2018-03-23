@@ -2,13 +2,13 @@ package ru.vsu.amm.alg_str.algorithms;
 
 public class BlockAlgorithm implements Algorithm {
     @Override
-    public int method(String text, String target) {
+    public int method(String text, String pattern) {
         final String DELIMITER = "#";
-        String helpString = new StringBuilder(target).append(DELIMITER)
+        String helpString = new StringBuilder(pattern).append(DELIMITER)
                 .append(text)
                 .toString();
         int[] maxBorderArray = block(helpString);
-        int targetLen = target.length();
+        int targetLen = pattern.length();
         int countInputs = 0;
         for(int elem: maxBorderArray){
             if(elem == targetLen)

@@ -4,15 +4,14 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.vsu.amm.alg_str.algorithms.Algorithm;
 import ru.vsu.amm.alg_str.algorithms.BlockAlgorithm;
-import ru.vsu.amm.alg_str.algorithms.BordersAlgorithm;
+import ru.vsu.amm.alg_str.algorithms.BorderAlgorithm;
 import ru.vsu.amm.alg_str.algorithms.KNPAlgorithm;
 
 import java.io.*;
 import java.util.Calendar;
 import java.util.Random;
-import java.util.Scanner;
 
-public class AlgorithmTest {
+public class StressTests {
 
     Algorithm borderMethod;
     Algorithm blocksMethod;
@@ -74,7 +73,7 @@ public class AlgorithmTest {
 
     @Before
     public void beforeTest(){
-        borderMethod = new BordersAlgorithm();
+        borderMethod = new BorderAlgorithm();
         blocksMethod = new BlockAlgorithm();
         knpMethod = new KNPAlgorithm();
 //        putInFile("src\\test\\resources\\abcd_1kkk",1000000000L);

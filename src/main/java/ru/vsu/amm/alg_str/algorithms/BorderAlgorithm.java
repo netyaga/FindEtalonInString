@@ -1,17 +1,17 @@
 package ru.vsu.amm.alg_str.algorithms;
 
-public class BordersAlgorithm implements Algorithm {
+public class BorderAlgorithm implements Algorithm {
     @Override
-    public int method(String text, String target) {
+    public int method(String text, String pattern) {
         final String DELIMITER = "#";
-        String helpString = new StringBuilder(target).append(DELIMITER)
+        String helpString = new StringBuilder(pattern).append(DELIMITER)
                 .append(text)
                 .toString();
         int[] maxBorderArray = maxBorderArray(helpString);
-        int targetLen = target.length();
+        int patternLen = pattern.length();
         int countInputs = 0;
         for(int elem: maxBorderArray){
-            if(elem == targetLen)
+            if(elem == patternLen)
                 countInputs++;
         }
         return countInputs;
