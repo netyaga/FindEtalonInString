@@ -21,31 +21,31 @@ public class KNPAlgorithmTest {
     public void test(){
         String text = "abababaabababaababaaba";
         String pattern =  "abaababaaba";
-        MKNPAlgorithm alg = new MKNPAlgorithm("ab");
+        MKNPAlgorithm alg = new MKNPAlgorithm(26);
         int result = alg.method(text,pattern);
         assertEquals(result, 1);
 
         text = "aaaaaaa";
         pattern = "aaa";
-        alg.setAlphabet("aaa");
+
         result = alg.method(text,pattern);
         assertEquals(result, 5);
 
         text = "aabaabaa";
         pattern = "aabaa";
-        alg.setAlphabet(pattern);
+
         result = alg.method(text,pattern);
         assertEquals(result, 2);
 
         text = "aabaabaa";
         pattern = "aabbaa";
-        alg.setAlphabet(pattern);
+
         result = alg.method(text,pattern);
         assertEquals(result, 0);
 
         text = "aabaabaa";
         pattern = "aabbaa";
-        alg.setAlphabet(pattern);
+
         result = alg.method(text,pattern);
         assertEquals(result, 0);
     }

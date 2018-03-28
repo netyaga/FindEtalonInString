@@ -1,4 +1,4 @@
-package ru.vsu.amm.alg_str;
+package ru.vsu.amm.alg_str.quality_tests;
 
 public class QualitySimpleTest {
     public String text;

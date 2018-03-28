@@ -1,54 +1,43 @@
 package ru.vsu.amm.alg_str.algorithms;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MKNPAlgorithm implements Algorithm {
-    Map<Character,Integer> alphabetMap;
     int alphabetSize;
 
-    public MKNPAlgorithm(String alphabet){
-        setAlphabet(alphabet);
+    public MKNPAlgorithm(int countSymbols){
+        alphabetSize = countSymbols;
     }
 
-    public void setAlphabet(String alphabet){
-        alphabetMap = new HashMap<Character, Integer>();
-        alphabetSize = alphabet.length();
-        for(int i = 0 ; i< alphabetSize; i++){
-            if(!alphabetMap.containsKey(alphabet.charAt(i)))
-                alphabetMap.put(alphabet.charAt(i), i);
-        }
-    }
+
     public int method(String text, String pattern) {
         int countInputs = 0;
         int textLen = text.length();
         int targetLen = pattern.length();
-        int[][] maxBorderMap = maxBorderMap(pattern);
+        int[][] maxBorderMap = maxBorderMatrix(pattern);
         int targetIndex = 0;
         for(int i = 0; i < textLen; i++){
             if(targetIndex>0 && pattern.charAt(targetIndex) != text.charAt(i))
-                targetIndex = maxBorderMap[targetIndex - 1][alphabetMap.get(text.charAt(i))];
+                targetIndex = maxBorderMap[targetIndex - 1][text.charAt(i) - 'a'];
 
             if(pattern.charAt(targetIndex) == text.charAt(i))
                 targetIndex++;
             if(targetIndex == targetLen){
                 countInputs++;
                 if(i + 1 < textLen)
-                    targetIndex = maxBorderMap[targetLen - 1][alphabetMap.get(text.charAt(i+1))];
+                    targetIndex = maxBorderMap[targetLen - 1][text.charAt(i+1) - 'a'];
             }
 
         }
         return countInputs;
     }
 
-    private int[][] maxBorderMap(String target) {
+    private int[][] maxBorderMatrix(String target) {
         int[] maxBorderArray = modifiedMaxBorderArray(target);
         int patternLen = target.length();
         int[][] map = new int[patternLen][alphabetSize];
         for(int i = 0; i < patternLen; i++){
             char nextSymbol = target.charAt(maxBorderArray[i]);
-            if(alphabetMap.containsKey(nextSymbol))
-                map[i][alphabetMap.get(nextSymbol)] = maxBorderArray[i];
+            if(nextSymbol - 'a' < alphabetSize)
+                map[i][nextSymbol - 'a'] = maxBorderArray[i];
             else
                 System.err.println("symbol not in alphabet: " + nextSymbol);
         }

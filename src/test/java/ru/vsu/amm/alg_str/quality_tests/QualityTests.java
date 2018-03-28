@@ -1,8 +1,9 @@
-package ru.vsu.amm.alg_str;
+package ru.vsu.amm.alg_str.quality_tests;
 
 import org.junit.Before;
 import org.junit.Test;
 import ru.vsu.amm.alg_str.algorithms.*;
+import ru.vsu.amm.alg_str.quality_tests.QualitySimpleTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,7 +21,7 @@ public class QualityTests {
         algorithms.add(new BlockAlgorithm());
         algorithms.add(new BorderAlgorithm());
         algorithms.add(new KNPAlgorithm());
-        algorithms.add(new MKNPAlgorithm("qwertyuiopasdfghjklzxcvbnm"));
+        algorithms.add(new MKNPAlgorithm(26));
         algorithms.add(new MoorAlgorithm());
 
         tests = new LinkedList<QualitySimpleTest>();
