@@ -17,7 +17,7 @@ public class BlockAlgorithm implements Algorithm {
         return countInputs;
     }
 
-    private static int[] block(String str) {
+    private int[] block(String str) {
         int n  = str.length();
         int r = 0; // правая граница блока
         int l = 0; // левая граница блока
@@ -50,7 +50,7 @@ public class BlockAlgorithm implements Algorithm {
         return bl;
     }
 
-    private static int comp(int p1, int p2, String str){
+    private int comp(int p1, int p2, String str){
         int n = str.length();
         if(p1 >= n || p2 >= n)
             return 0;

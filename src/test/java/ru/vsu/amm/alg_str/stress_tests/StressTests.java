@@ -32,7 +32,8 @@ public class StressTests {
         listAlg.add(new BorderAlgorithm());
         listAlg.add(new KNPAlgorithm());//hellelle...h elle
         listAlg.add(new MKNPAlgorithm(4));
-        listAlg.add(new MoorAlgorithm());
+        listAlg.add(new MoorBadSymbolAlgorithm());
+        listAlg.add(new MoorGoodSuffixAlgorithm());
 
         listTests = new LinkedList<StressSimpleTest>();
         listTests.add(new StressSimpleTest("src\\test\\resources\\ab_100kk","src\\test\\resources\\a_5kk"));

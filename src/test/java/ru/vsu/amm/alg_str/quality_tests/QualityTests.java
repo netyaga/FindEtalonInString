@@ -3,7 +3,6 @@ package ru.vsu.amm.alg_str.quality_tests;
 import org.junit.Before;
 import org.junit.Test;
 import ru.vsu.amm.alg_str.algorithms.*;
-import ru.vsu.amm.alg_str.quality_tests.QualitySimpleTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +21,8 @@ public class QualityTests {
         algorithms.add(new BorderAlgorithm());
         algorithms.add(new KNPAlgorithm());
         algorithms.add(new MKNPAlgorithm(26));
-        algorithms.add(new MoorAlgorithm());
+        algorithms.add(new MoorBadSymbolAlgorithm());
+        algorithms.add(new MoorGoodSuffixAlgorithm());
 
         tests = new LinkedList<QualitySimpleTest>();
         tests.add(new QualitySimpleTest("abaabaaaaba","aba", 3));
@@ -39,7 +39,11 @@ public class QualityTests {
             System.out.println(test.toString());
             for(Algorithm alg: algorithms){
                 int result = alg.method(test.text, test.pattern);
+                if( result != test.answer){
+                    System.err.println(alg.getClass().toString());
+                }
                 assertEquals(result, test.answer);
+
             }
         }
     }

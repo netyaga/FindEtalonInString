@@ -17,7 +17,7 @@ public class BorderAlgorithm implements Algorithm {
         return countInputs;
     }
 
-    private static int[] maxBorderArray(String str){
+    private int[] maxBorderArray(String str){
         int n = str.length(); //длина строки
         int[] br = new int[n]; // массив с длинами b[i] максимальных граней строк str[0..i]
         int t; // вспомогательная переменная что-то типа: длина максимальной грани предыдущей строки
