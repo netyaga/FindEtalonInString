@@ -1,25 +1,22 @@
-package ru.vsu.amm.alg_str.stress_tests;
-
+package ru.vsu.amm.alg_str;
 
 import org.junit.Before;
 import org.junit.Test;
 import ru.vsu.amm.alg_str.algorithms.*;
-
-
+import ru.vsu.amm.alg_str.stress_tests.StressSimpleTest;
 
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StressTests {
-
+public class KRAlgorithmTests {
     List<Algorithm> listAlg;
     List<StressSimpleTest> listTests;
 
     private long simpleTest(String text, String target, Algorithm algorithm) {
 
         long start = Calendar.getInstance().getTimeInMillis();
-        System.out.println(algorithm.method(text, target));
+        algorithm.method(text, target);
         long end = Calendar.getInstance().getTimeInMillis();
 
         return end - start;
@@ -30,24 +27,19 @@ public class StressTests {
         listAlg = new LinkedList<Algorithm>();
         listAlg.add(new BlockAlgorithm());
         listAlg.add(new BorderAlgorithm());
-        listAlg.add(new KNPAlgorithm());//hellelle...h elle
+        listAlg.add(new KNPAlgorithm());
         listAlg.add(new MKNPAlgorithm(4));
-        listAlg.add(new MoorBadSymbolAlgorithm());
-        //listAlg.add(new MoorGoodSuffixAlgorithm());
-        listAlg.add(new ShiftAndAlgorithm());
+        // listAlg.add(new MoorBadSymbolAlgorithm());
+        listAlg.add(new MoorGoodSuffixAlgorithm());
+        listAlg.add(new KarpaRabinaAlgorithm((int)Math.pow(2, 61) - 1));
 
         listTests = new LinkedList<StressSimpleTest>();
-        listTests.add(new StressSimpleTest("src\\test\\resources\\ab_100kk","src\\test\\resources\\a_5kk"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abcd_100kk","src\\test\\resources\\a_5kk"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abc_100kk","abcabcabc"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abcd_100kk","src\\test\\resources\\abc_5kk"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abc_100kk","src\\test\\resources\\ab_5kk"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abcd_100kk","src\\test\\resources\\abcd_5kk"));
+        listTests.add(new StressSimpleTest("src\\test\\resources\\a_100kk","src\\test\\resources\\a_5kk"));
         listTests.add(new StressSimpleTest("src\\test\\resources\\ab_50kk","abbbaabbbaabbbaabbbaabbbaabbbaabbbaabbbaabbba"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\abc_100kk","src\\test\\resources\\pattern_mknp1"));
-        listTests.add(new StressSimpleTest("src\\test\\resources\\text_mknp","src\\test\\resources\\pattern_mknp"));
+        listTests.add(new StressSimpleTest("src\\test\\resources\\a_100kk","aaa"));
 
     }
+
     @Test
     public void testing() throws Exception {
         for(StressSimpleTest test: listTests ){

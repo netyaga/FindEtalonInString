@@ -83,8 +83,6 @@ public class MoorGoodSuffixAlgorithm implements Algorithm {
         int len = str.length();
         int[] modifiedSufMaxBorderArray = new int[len];
         for (int i = len - 2; i > 0; i--) {
-            int isuf = len - sufMaxBorderArray[i] - 1;
-            int icopySuf = i - 1;
             if (str.charAt(len - sufMaxBorderArray[i] - 1) != str.charAt(i - 1))
                 modifiedSufMaxBorderArray[i] = sufMaxBorderArray[i];
             else
